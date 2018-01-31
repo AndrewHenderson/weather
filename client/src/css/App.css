@@ -1,0 +1,56 @@
+.searchbox {
+  position: relative;
+}
+.dropdown {
+  position: absolute;
+  top: 30px;
+  border-right: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  width: 100%;
+}
+.dropdown li {
+  background: white;
+  padding: 5px 10px;
+  border-bottom: 1px solid #ccc;
+}
+.dropdown li:hover {
+  cursor: pointer;
+  background-color: #f1f1f1;
+}
+.flex-1 {
+  display: flex
+}
+.forecast {
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+.forecast:first-of-type {
+  border-left: 1px solid #ccc;
+}
+.weekday {
+  font-weight: bold;
+}
+.month {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: red;
+}
+.day {
+  font-size: 34px;
+  line-height: 26px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.forecast .divider {
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.temp {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
