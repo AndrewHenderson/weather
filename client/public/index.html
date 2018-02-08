@@ -26,7 +26,22 @@
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
+    <script>
+      var map;
+      var irvine = {
+        lat: 33.6845673,
+        lng: -117.8265049
+      };
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: irvine,
+          zoom: 8
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
     <div id="root"></div>
+    <div id="map"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

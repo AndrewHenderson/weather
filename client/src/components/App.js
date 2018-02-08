@@ -5,6 +5,8 @@ import '../css/App.css';
 import SearchBox from './SearchBox';
 import Forecasts from './Forecasts';
 
+let markers = [];
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -29,12 +31,15 @@ class App extends Component {
         .then((json) => {
           const coords = get(json, 'result.geometry.location');
           this.setLocation(coords);
+          this.setMarker(coords);
         })
     });
   };
 
   setLocation(coords) {
     const time = moment().toISOString();
+
+    window.map.setCenter(coords);
 
     fetch('/weather', {
       method: 'POST',
@@ -52,6 +57,19 @@ class App extends Component {
       });
   }
 
+  setMarker(coords) {
+    // Clear old markers
+    markers.forEach((marker) => {
+      marker.setMap(null);
+    });
+    markers = [];
+    // Set new marker
+    markers.push(new window.google.maps.Marker({
+      position: coords,
+      map: window.map,
+    }));
+  }
+
   render() {
     const { location, forecasts } = this.state;
     return (
@@ -59,8 +77,10 @@ class App extends Component {
         <SearchBox
           onSelection={ this.handlePlaceSelection }
         />
-        <h3 className={ location ? null : 'hide' }>{ location }</h3>
-        <Forecasts data={ forecasts } />
+        <div className="forecast-data">
+          <h3 className={ location ? null : 'hide' }>{ location }</h3>
+          <Forecasts data={ forecasts } />
+        </div>
       </div>
     );
   }

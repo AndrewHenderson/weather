@@ -54,3 +54,11 @@
   font-weight: bold;
   margin-bottom: 8px;
 }
+
+#map {
+  height: 600px;
+  width: 100%;
+}
+.forecast-data {
+  min-height: 400px;
+}
